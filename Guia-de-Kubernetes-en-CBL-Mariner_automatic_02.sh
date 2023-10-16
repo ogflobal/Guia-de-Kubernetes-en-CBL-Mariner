@@ -33,7 +33,7 @@ kubectl apply -f components.yaml
 
 # Observar el estado de los pods en el namespace calico-system
 while true; do
-    PODS_READY=$(kubectl get pods -n calico-system --no-headers | awk '{print $2}' | grep -E "^([0-9]+)/\1$" | wc -l)
+    PODS_READY=$(kubectl get pods -n calico-system --no-headers | awk '$2 ~ /^[0-9]+\/[0-9]+$/ {print $2}' | wc -l)
     TOTAL_PODS=$(kubectl get pods -n calico-system --no-headers | wc -l)
 
     if [ "$PODS_READY" -eq "$TOTAL_PODS" ]; then
@@ -41,7 +41,7 @@ while true; do
     fi
 
     echo "Esperando a que todos los pods en calico-system estén listos..."
-    sleep 165
+    sleep 5  # Reducido el tiempo de espera para un bucle más rápido
 done
 
 # Quitar las marcas de los nodos que indican que son controladores o maestros
