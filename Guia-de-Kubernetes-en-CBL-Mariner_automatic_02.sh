@@ -1,22 +1,22 @@
 #!/bin/bash
 
 # Solicitar al usuario que ingrese la dirección IP del servidor
-read -p "Ingrese la dirección IP del servidor: " SERVER_IP
+read -p "Ingrese la dirección IP del servidor (por ejemplo, 192.168.0.102): " SERVER_IP
 
 # Solicitar al usuario que ingrese el nombre del endpoint
-read -p "Ingrese el nombre del endpoint: " ENDPOINT_NAME
+read -p "Ingrese el nombre del endpoint (por ejemplo, vm2.192.168.0.102.nip.io): " ENDPOINT_NAME
 
 # Iniciar el clúster de Kubernetes con las direcciones IP y el nombre del endpoint proporcionados
-kubeadm init --apiserver-advertise-address=$SERVER_IP --control-plane-endpoint=$ENDPOINT_NAME --pod-network-cidr=192.168.0.0/16
+sudo kubeadm init --apiserver-advertise-address=$SERVER_IP --control-plane-endpoint=$ENDPOINT_NAME --pod-network-cidr=192.168.0.0/16
 
 # Crear el directorio para el archivo de configuración de Kubeconfig
 mkdir -p $HOME/.kube
 
 # Copiar el archivo de configuración de Kubernetes a la ubicación correcta
-cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 
 # Cambiar la propiedad del archivo de configuración para que sea accesible por el usuario
-chown $(id -u):$(id -g) $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 # Crear recursos de Calico para la red
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/tigera-operator.yaml
@@ -41,7 +41,7 @@ while true; do
     fi
 
     echo "Esperando a que todos los pods en calico-system estén listos..."
-    sleep 5
+    sleep 30
 done
 
 # Quitar las marcas de los nodos que indican que son controladores o maestros
