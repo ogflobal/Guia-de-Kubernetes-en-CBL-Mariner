@@ -1,6 +1,6 @@
 # Guia-de-Kubernetes-en-CBL-Mariner
 
-![image](https://github.com/ogflobal/Guia-de-Kubernetes-en-CBL-Mariner/assets/74718043/a6aa6342-a738-4f4d-b407-6ac79f24f762)
+![image](https://github.com/ogflobal/Guia-de-Kubernetes-en-CBL-Mariner/assets/74718043/ae42794c-e59c-4bdf-9020-569cce18ad8b)
 
 Descarga y ejecuta los archivos: El archivo [implementación 01](/Guia-de-Kubernetes-en-CBL-Mariner_automatic_01.sh) con permisos de administrador. Después de reiniciar el sistema, continúa con el archivo [implementación 02](/Guia-de-Kubernetes-en-CBL-Mariner_automatic_02.sh) utilizando permisos de usuario.
 
