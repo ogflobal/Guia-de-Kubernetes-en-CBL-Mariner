@@ -1,6 +1,6 @@
 # Guia-de-Kubernetes-en-CBL-Mariner
 
-![image](https://github.com/ogflobal/Guia-de-Kubernetes-en-CBL-Mariner/assets/74718043/02497865-fe22-4695-850f-4cfb2ff0e629)
+![image](https://github.com/ogflobal/Guia-de-Kubernetes-en-CBL-Mariner/assets/74718043/8504e5d2-c778-42f4-b2fc-3e239b17c4a7)
 
 ```sh
 # Crea un nuevo espacio de nombres (namespace) llamado 'my-namespace'
