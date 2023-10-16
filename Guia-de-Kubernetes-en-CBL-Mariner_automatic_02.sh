@@ -40,12 +40,10 @@ kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 kubectl taint nodes --all node-role.kubernetes.io/master-
 
 # Descargar el archivo de componentes del servidor de métricas
-curl -o components.yaml https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+wget https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 
 # Modificar el archivo de componentes para habilitar el modo de conexión segura con Kubelet
-sed -i 's/    - --metric-resolution=15s/    - --metric-resolution=15s\n    - --kubelet-insecure-tls=true/g' components.yaml
+sed -i 's/        - --metric-resolution=15s/        - --metric-resolution=15s\n        - --kubelet-insecure-tls=true/g' components.yaml
 
 # Aplicar los componentes al clúster
 kubectl apply -f components.yaml
-
-
