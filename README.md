@@ -1,6 +1,6 @@
 # Guia-de-Kubernetes-en-CBL-Mariner
 
-Descarga y ejecuta el archivo de [implementación](/Guia-de-OpenShift-en-CentOS_automatic.sh).
+Descarga y ejecuta los archivos de [implementación 01](/Guia-de-Kubernetes-en-CBL-Mariner_automatic_01.sh) y luego [implementación 02](/Guia-de-Kubernetes-en-CBL-Mariner_automatic_02.sh).
 
 ![image](https://github.com/ogflobal/Guia-de-Kubernetes-en-CBL-Mariner/assets/74718043/8504e5d2-c778-42f4-b2fc-3e239b17c4a7)
 
