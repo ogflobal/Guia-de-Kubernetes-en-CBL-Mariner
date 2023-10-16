@@ -24,3 +24,5 @@ kubectl describe services my-service
 # Realiza una solicitud HTTP al servicio utilizando la dirección IP del clúster o la dirección IP externa y el puerto especificado
 curl http://<cluster-ip|external-ip>:<port>
 ```
+
+![image](https://github.com/ogflobal/Guia-de-Kubernetes-en-CBL-Mariner/assets/74718043/d953a402-8ce1-4e7e-a0a4-7e3a8d338ed4)
