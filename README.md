@@ -5,7 +5,7 @@
 ```sh
 kubectl create namespace my-namespace
 kubectl config set-context --current --namespace=my-namespace
-kubectl apply -f https://k8s.io/examples/controllers/nginx-deployment.yaml namespace=my-namespace
+kubectl apply -f https://k8s.io/examples/controllers/nginx-deployment.yaml -n=my-namespace
 
 kubectl get deployments hello-world
 kubectl describe deployments hello-world
