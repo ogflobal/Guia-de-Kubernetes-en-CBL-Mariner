@@ -41,7 +41,7 @@ while true; do
     fi
 
     echo "Esperando a que todos los pods en calico-system estén listos..."
-    sleep 30
+    sleep 165
 done
 
 # Quitar las marcas de los nodos que indican que son controladores o maestros
