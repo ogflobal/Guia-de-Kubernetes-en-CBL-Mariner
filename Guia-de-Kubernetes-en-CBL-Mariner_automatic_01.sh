@@ -61,7 +61,6 @@ systemctl enable --now docker.service
 
 # Agrega el usuario obtenido de la sesión al grupo "docker"
 usermod -aG docker "$USER"
-newgrp docker
 
 # Reiniciar
 reboot

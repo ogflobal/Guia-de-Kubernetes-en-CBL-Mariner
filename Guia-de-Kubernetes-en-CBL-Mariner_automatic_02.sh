@@ -7,16 +7,16 @@ read -p "Ingrese la dirección IP del servidor: " SERVER_IP
 read -p "Ingrese el nombre del endpoint: " ENDPOINT_NAME
 
 # Iniciar el clúster de Kubernetes con las direcciones IP y el nombre del endpoint proporcionados
-sudo kubeadm init --apiserver-advertise-address=$SERVER_IP --control-plane-endpoint=$ENDPOINT_NAME --pod-network-cidr=192.168.0.0/16
+kubeadm init --apiserver-advertise-address=$SERVER_IP --control-plane-endpoint=$ENDPOINT_NAME --pod-network-cidr=192.168.0.0/16
 
 # Crear el directorio para el archivo de configuración de Kubeconfig
 mkdir -p $HOME/.kube
 
 # Copiar el archivo de configuración de Kubernetes a la ubicación correcta
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 
 # Cambiar la propiedad del archivo de configuración para que sea accesible por el usuario
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
+chown $(id -u):$(id -g) $HOME/.kube/config
 
 # Crear recursos de Calico para la red
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/tigera-operator.yaml
