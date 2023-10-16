@@ -22,15 +22,6 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/tigera-operator.yaml
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/custom-resources.yaml
 
-# Descargar el archivo de componentes del servidor de métricas
-curl -o components.yaml https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
-
-# Modificar el archivo de componentes para habilitar el modo de conexión segura con Kubelet
-sed -i 's/    - --metric-resolution=15s/    - --metric-resolution=15s\n    - --kubelet-insecure-tls=true/g' components.yaml
-
-# Aplicar los componentes al clúster
-kubectl apply -f components.yaml
-
 # Observar el estado de los pods en el namespace calico-system
 while true; do
     PODS_READY=$(kubectl get pods -n calico-system --no-headers | awk '$2 ~ /^[0-9]+\/[0-9]+$/ {print $2}' | wc -l)
@@ -47,5 +38,14 @@ done
 # Quitar las marcas de los nodos que indican que son controladores o maestros
 kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 kubectl taint nodes --all node-role.kubernetes.io/master-
+
+# Descargar el archivo de componentes del servidor de métricas
+curl -o components.yaml https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
+# Modificar el archivo de componentes para habilitar el modo de conexión segura con Kubelet
+sed -i 's/    - --metric-resolution=15s/    - --metric-resolution=15s\n    - --kubelet-insecure-tls=true/g' components.yaml
+
+# Aplicar los componentes al clúster
+kubectl apply -f components.yaml
 
 
